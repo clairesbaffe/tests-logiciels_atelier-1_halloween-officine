@@ -157,12 +157,11 @@ public class Officine {
                 .replace("radicelles de racine hurlante", "radicelle de racine hurlante")
                 .replace("gouttes de sang de citrouille", "goutte de sang de citrouille")
 
-                // --- Potions (et ingrédients composés) ---
                 .replace("fioles de glaires purulentes", "fiole de glaires purulentes")
                 .replace("billes d'âme évanescente", "bille d'âme évanescente")
                 .replace("soupçons de sels suffocants", "soupçon de sels suffocants")
                 .replace("batons de pâte sépulcrale", "baton de pâte sépulcrale")
-                .replace("bâtons de pâte sépulcrale", "baton de pâte sépulcrale") // gestion de l'accent éventuel
+                .replace("bâtons de pâte sépulcrale", "baton de pâte sépulcrale")
                 .replace("bouffées d'essence de cauchemar", "bouffée d'essence de cauchemar");
 
         return nom;

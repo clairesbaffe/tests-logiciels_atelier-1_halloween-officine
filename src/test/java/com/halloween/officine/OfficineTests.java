@@ -27,9 +27,7 @@ class OfficineTests {
 
         test.rentrer("3 yeux de grenouille");
 
-        var quantite = test.quantite("yeux de grenouille");
-
-        assertEquals(3, quantite);
+        assertEquals(3, test.quantite("yeux de grenouille"));
     }
 
     @Test
@@ -37,12 +35,9 @@ class OfficineTests {
         var test = new Officine();
 
         test.rentrer("3 yeux de grenouille");
-
         test.rentrer("-2 yeux de grenouille");
 
-        var quantite = test.quantite("yeux de grenouille");
-
-        assertEquals(1, quantite);
+        assertEquals(1, test.quantite("yeux de grenouille"));
     }
 
     @Test
@@ -51,9 +46,7 @@ class OfficineTests {
 
         test.rentrer("0 yeux de grenouille");
 
-        var quantite = test.quantite("yeux de grenouille");
-
-        assertEquals(0, quantite);
+        assertEquals(0, test.quantite("yeux de grenouille"));
     }
 
     @Test
@@ -80,9 +73,7 @@ class OfficineTests {
 
         test.rentrer("4 larmes de brume funèbre");
 
-        var quantite = test.quantite("larmes de brume funèbre");
-
-        assertEquals(4, quantite);
+        assertEquals(4, test.quantite("larmes de brume funèbre"));
     }
 
     @Test
@@ -91,9 +82,7 @@ class OfficineTests {
 
         test.rentrer("3 yeux de grenouille");
 
-        var quantite = test.quantite("yeux de grenouille");
-
-        assertEquals(3, quantite);
+        assertEquals(3, test.quantite("yeux de grenouille"));
     }
 
     @Test
@@ -102,9 +91,7 @@ class OfficineTests {
 
         test.rentrer("1 oeil de grenouille");
 
-        var quantite = test.quantite("yeux de grenouille");
-
-        assertEquals(1, quantite);
+        assertEquals(1, test.quantite("yeux de grenouille"));
     }
 
     @Test
@@ -113,9 +100,7 @@ class OfficineTests {
 
         test.rentrer("3 yeux de grenouille");
 
-        var quantite = test.quantite("œil de grenouille");
-
-        assertEquals(3, quantite);
+        assertEquals(3, test.quantite("œil de grenouille"));
     }
 
     @Test
@@ -124,9 +109,7 @@ class OfficineTests {
 
         test.rentrer("3 yeux de grenouille");
 
-        var quantite = test.quantite("yeux de grenouille");
-
-        assertEquals(3, quantite);
+        assertEquals(3, test.quantite("yeux de grenouille"));
     }
 
     @Test
@@ -147,13 +130,9 @@ class OfficineTests {
 
         test.preparer("1 fiole de glaires purulentes");
 
-        var quantiteLarmes = test.quantite("larmes de brume funèbre");
-        var quantiteGouttes = test.quantite("gouttes de sang de citrouille");
-        var quantiteFioles = test.quantite("fiole de glaires purulentes");
-
-        assertEquals(1, quantiteLarmes);
-        assertEquals(3, quantiteGouttes);
-        assertEquals(1, quantiteFioles);
+        assertEquals(1, test.quantite("larmes de brume funèbre"));
+        assertEquals(3, test.quantite("gouttes de sang de citrouille"));
+        assertEquals(1, test.quantite("fiole de glaires purulentes"));
     }
 
     @Test
@@ -165,13 +144,9 @@ class OfficineTests {
 
         test.preparer("3 fioles de glaires purulentes");
 
-        var quantiteLarmes = test.quantite("larmes de brume funèbre");
-        var quantiteGouttes = test.quantite("gouttes de sang de citrouille");
-        var quantiteFioles = test.quantite("fiole de glaires purulentes");
-
-        assertEquals(1, quantiteLarmes);
-        assertEquals(3, quantiteGouttes);
-        assertEquals(3, quantiteFioles);
+        assertEquals(1, test.quantite("larmes de brume funèbre"));
+        assertEquals(3, test.quantite("gouttes de sang de citrouille"));
+        assertEquals(3, test.quantite("fiole de glaires purulentes"));
     }
 
     @Test
@@ -180,13 +155,9 @@ class OfficineTests {
 
         test.preparer("0 fioles de glaires purulentes");
 
-        var quantiteLarmes = test.quantite("larmes de brume funèbre");
-        var quantiteGouttes = test.quantite("gouttes de sang de citrouille");
-        var quantiteFioles = test.quantite("fiole de glaires purulentes");
-
-        assertEquals(0, quantiteLarmes);
-        assertEquals(0, quantiteGouttes);
-        assertEquals(0, quantiteFioles);
+        assertEquals(0, test.quantite("larmes de brume funèbre"));
+        assertEquals(0, test.quantite("gouttes de sang de citrouille"));
+        assertEquals(0, test.quantite("fiole de glaires purulentes"));
     }
 
     @Test
@@ -217,14 +188,11 @@ class OfficineTests {
         assertThrows(RuntimeException.class, () -> {
             test.preparer("1 fiole de glaires purulentes");
         });
+        // On ne peut préparer aucune potion demandée
 
-        var quantiteLarmes = test.quantite("larmes de brume funèbre");
-        var quantiteGouttes = test.quantite("gouttes de sang de citrouille");
-        var quantiteFioles = test.quantite("fiole de glaires purulentes");
-
-        assertEquals(1, quantiteLarmes);
-        assertEquals(4, quantiteGouttes);
-        assertEquals(0, quantiteFioles);
+        assertEquals(1, test.quantite("larmes de brume funèbre"));
+        assertEquals(4, test.quantite("gouttes de sang de citrouille"));
+        assertEquals(0, test.quantite("fiole de glaires purulentes"));
     }
 
     @Test
@@ -235,17 +203,12 @@ class OfficineTests {
         test.rentrer("6 gouttes de sang de citrouille");
 
         test.preparer("3 fioles de glaires purulentes");
+        // On ne peut préparer que 2 potions demandées
+        // Pas d'erreur levée
 
-        // on ne peut préparer que 2 potions
-        // pas d'erreur levée
-
-        var quantiteLarmes = test.quantite("larmes de brume funèbre");
-        var quantiteGouttes = test.quantite("gouttes de sang de citrouille");
-        var quantiteFioles = test.quantite("fiole de glaires purulentes");
-
-        assertEquals(1, quantiteLarmes);
-        assertEquals(4, quantiteGouttes);
-        assertEquals(2, quantiteFioles);
+        assertEquals(1, test.quantite("larmes de brume funèbre"));
+        assertEquals(4, test.quantite("gouttes de sang de citrouille"));
+        assertEquals(2, test.quantite("fiole de glaires purulentes"));
     }
 
     @Test
@@ -259,17 +222,11 @@ class OfficineTests {
 
         test.preparer("1 baton de pâte sépulcrale");
 
-        var quantiteLarmes = test.quantite("larmes de brume funèbre");
-        var quantiteGouttes = test.quantite("gouttes de sang de citrouille");
-        var quantiteFioles = test.quantite("fiole de glaires purulentes");
-        var quantiteRadicelles = test.quantite("radicelles de racine hurlante");
-        var quantiteBatons = test.quantite("baton de pâte sépulcrale");
-
-        assertEquals(1, quantiteLarmes);
-        assertEquals(0, quantiteGouttes);
-        assertEquals(0, quantiteFioles);
-        assertEquals(1, quantiteRadicelles);
-        assertEquals(1, quantiteBatons);
+        assertEquals(1, test.quantite("larmes de brume funèbre"));
+        assertEquals(0, test.quantite("gouttes de sang de citrouille"));
+        assertEquals(0, test.quantite("fiole de glaires purulentes"));
+        assertEquals(1, test.quantite("radicelles de racine hurlante"));
+        assertEquals(1, test.quantite("baton de pâte sépulcrale"));
     }
 
     @Test
@@ -283,17 +240,11 @@ class OfficineTests {
 
         test.preparer("3 baton de pâte sépulcrale");
 
-        var quantiteLarmes = test.quantite("larmes de brume funèbre");
-        var quantiteGouttes = test.quantite("gouttes de sang de citrouille");
-        var quantiteFioles = test.quantite("fiole de glaires purulentes");
-        var quantiteRadicelles = test.quantite("radicelles de racine hurlante");
-        var quantiteBatons = test.quantite("baton de pâte sépulcrale");
-
-        assertEquals(2, quantiteLarmes);
-        assertEquals(0, quantiteGouttes);
-        assertEquals(1, quantiteFioles);
-        assertEquals(3, quantiteRadicelles);
-        assertEquals(3, quantiteBatons);
+        assertEquals(2, test.quantite("larmes de brume funèbre"));
+        assertEquals(0, test.quantite("gouttes de sang de citrouille"));
+        assertEquals(1, test.quantite("fiole de glaires purulentes"));
+        assertEquals(3, test.quantite("radicelles de racine hurlante"));
+        assertEquals(3, test.quantite("baton de pâte sépulcrale"));
     }
 
     @Test
@@ -306,17 +257,11 @@ class OfficineTests {
 
         test.preparer("1 baton de pâte sépulcrale");
 
-        var quantiteLarmes = test.quantite("larmes de brume funèbre");
-        var quantiteGouttes = test.quantite("gouttes de sang de citrouille");
-        var quantiteFioles = test.quantite("fiole de glaires purulentes");
-        var quantiteRadicelles = test.quantite("radicelles de racine hurlante");
-        var quantiteBatons = test.quantite("baton de pâte sépulcrale");
-
-        assertEquals(1, quantiteLarmes);
-        assertEquals(0, quantiteGouttes);
-        assertEquals(0, quantiteFioles);
-        assertEquals(1, quantiteRadicelles);
-        assertEquals(1, quantiteBatons);
+        assertEquals(1, test.quantite("larmes de brume funèbre"));
+        assertEquals(0, test.quantite("gouttes de sang de citrouille"));
+        assertEquals(0, test.quantite("fiole de glaires purulentes"));
+        assertEquals(1, test.quantite("radicelles de racine hurlante"));
+        assertEquals(1, test.quantite("baton de pâte sépulcrale"));
     }
 
     @Test
@@ -329,17 +274,11 @@ class OfficineTests {
 
         test.preparer("3 baton de pâte sépulcrale");
 
-        var quantiteLarmes = test.quantite("larmes de brume funèbre");
-        var quantiteGouttes = test.quantite("gouttes de sang de citrouille");
-        var quantiteFioles = test.quantite("fiole de glaires purulentes");
-        var quantiteRadicelles = test.quantite("radicelles de racine hurlante");
-        var quantiteBatons = test.quantite("baton de pâte sépulcrale");
-
-        assertEquals(4, quantiteLarmes);
-        assertEquals(1, quantiteGouttes);
-        assertEquals(0, quantiteFioles);
-        assertEquals(3, quantiteRadicelles);
-        assertEquals(3, quantiteBatons);
+        assertEquals(4, test.quantite("larmes de brume funèbre"));
+        assertEquals(1, test.quantite("gouttes de sang de citrouille"));
+        assertEquals(0, test.quantite("fiole de glaires purulentes"));
+        assertEquals(3, test.quantite("radicelles de racine hurlante"));
+        assertEquals(3, test.quantite("baton de pâte sépulcrale"));
     }
 
     @Test
@@ -353,19 +292,13 @@ class OfficineTests {
         assertThrows(RuntimeException.class, () -> {
             test.preparer("1 baton de pâte sépulcrale");
         });
-        // on ne peut pas en faire
+        // On ne peut faire aucune potion demandée
 
-        var quantiteLarmes = test.quantite("larmes de brume funèbre");
-        var quantiteGouttes = test.quantite("gouttes de sang de citrouille");
-        var quantiteFioles = test.quantite("fiole de glaires purulentes");
-        var quantiteRadicelles = test.quantite("radicelles de racine hurlante");
-        var quantiteBatons = test.quantite("baton de pâte sépulcrale");
-
-        assertEquals(1, quantiteLarmes);
-        assertEquals(1, quantiteGouttes);
-        assertEquals(0, quantiteFioles);
-        assertEquals(4, quantiteRadicelles);
-        assertEquals(0, quantiteBatons);
+        assertEquals(1, test.quantite("larmes de brume funèbre"));
+        assertEquals(1, test.quantite("gouttes de sang de citrouille"));
+        assertEquals(0, test.quantite("fiole de glaires purulentes"));
+        assertEquals(4, test.quantite("radicelles de racine hurlante"));
+        assertEquals(0, test.quantite("baton de pâte sépulcrale"));
     }
 
     @Test
@@ -377,19 +310,13 @@ class OfficineTests {
         test.rentrer("12 radicelles de racine hurlante");
 
         test.preparer("3 baton de pâte sépulcrale");
-        // on ne peut en faire que 2
+        // On ne peut faire que 2 potions demandées
 
-        var quantiteLarmes = test.quantite("larmes de brume funèbre");
-        var quantiteGouttes = test.quantite("gouttes de sang de citrouille");
-        var quantiteFioles = test.quantite("fiole de glaires purulentes");
-        var quantiteRadicelles = test.quantite("radicelles de racine hurlante");
-        var quantiteBatons = test.quantite("baton de pâte sépulcrale");
-
-        assertEquals(0, quantiteLarmes);
-        assertEquals(2, quantiteGouttes);
-        assertEquals(0, quantiteFioles);
-        assertEquals(6, quantiteRadicelles);
-        assertEquals(2, quantiteBatons);
+        assertEquals(0, test.quantite("larmes de brume funèbre"));
+        assertEquals(2, test.quantite("gouttes de sang de citrouille"));
+        assertEquals(0, test.quantite("fiole de glaires purulentes"));
+        assertEquals(6, test.quantite("radicelles de racine hurlante"));
+        assertEquals(2, test.quantite("baton de pâte sépulcrale"));
     }
 
     @Test
@@ -402,20 +329,14 @@ class OfficineTests {
         assertThrows(RuntimeException.class, () -> {
             test.preparer("1 baton de pâte sépulcrale");
         });
-        // on ne peut pas en faire
-        // mais on ne fait pas de fioles non plus
+        // On ne peut faire aucune potion demandée
+        // Mais on ne fait aucune fiole non plus
 
-        var quantiteLarmes = test.quantite("larmes de brume funèbre");
-        var quantiteGouttes = test.quantite("gouttes de sang de citrouille");
-        var quantiteFioles = test.quantite("fiole de glaires purulentes");
-        var quantiteRadicelles = test.quantite("radicelles de racine hurlante");
-        var quantiteBatons = test.quantite("baton de pâte sépulcrale");
-
-        assertEquals(3, quantiteLarmes);
-        assertEquals(1, quantiteGouttes);
-        assertEquals(0, quantiteFioles);
-        assertEquals(0, quantiteRadicelles);
-        assertEquals(0, quantiteBatons);
+        assertEquals(3, test.quantite("larmes de brume funèbre"));
+        assertEquals(1, test.quantite("gouttes de sang de citrouille"));
+        assertEquals(0, test.quantite("fiole de glaires purulentes"));
+        assertEquals(0, test.quantite("radicelles de racine hurlante"));
+        assertEquals(0, test.quantite("baton de pâte sépulcrale"));
     }
 
     @Test
@@ -427,19 +348,13 @@ class OfficineTests {
         test.rentrer("7 radicelles de racine hurlante");
 
         test.preparer("3 baton de pâte sépulcrale");
-        // on ne peut en faire que 2
-        // on ne fait donc que 2 fioles même si on pourrait en faire 3
+        // On ne peut faire que 2 potions demandées
+        // On ne fait donc que 2 fioles même si on pourrait en faire 3
 
-        var quantiteLarmes = test.quantite("larmes de brume funèbre");
-        var quantiteGouttes = test.quantite("gouttes de sang de citrouille");
-        var quantiteFioles = test.quantite("fiole de glaires purulentes");
-        var quantiteRadicelles = test.quantite("radicelles de racine hurlante");
-        var quantiteBatons = test.quantite("baton de pâte sépulcrale");
-
-        assertEquals(6, quantiteLarmes);
-        assertEquals(2, quantiteGouttes);
-        assertEquals(0, quantiteFioles);
-        assertEquals(1, quantiteRadicelles);
-        assertEquals(2, quantiteBatons);
+        assertEquals(6, test.quantite("larmes de brume funèbre"));
+        assertEquals(2, test.quantite("gouttes de sang de citrouille"));
+        assertEquals(0, test.quantite("fiole de glaires purulentes"));
+        assertEquals(1, test.quantite("radicelles de racine hurlante"));
+        assertEquals(2, test.quantite("baton de pâte sépulcrale"));
     }
 }
